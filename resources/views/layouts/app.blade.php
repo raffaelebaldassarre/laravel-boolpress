@@ -22,6 +22,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route ('contacts')}}">Contacts</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route ('articles_api')}}">Articoli API</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route ('categories_api')}}">Categorie API</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route ('tags_api')}}">Tag API</a>
+                    </li>
                 </ul>
             </nav>
         </header>
