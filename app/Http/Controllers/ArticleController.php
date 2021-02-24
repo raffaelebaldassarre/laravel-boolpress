@@ -15,6 +15,9 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $articles = Article::all();
+
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -25,6 +28,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('articles.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData= $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        Article::create($validateData);
+        $new_article = Article::orderBy('id', 'desc')->first();
+
+        return redirect()->route('articles.show', $new_article);
     }
 
     /**
@@ -44,9 +55,12 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($article)
     {
         //
+        $article = Article::find($article);
+
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -55,9 +69,11 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($article)
     {
         //
+        $article = Article::find($article);
+        return view('articles.edit', compact('article')); 
     }
 
     /**
@@ -67,9 +83,17 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $article)
     {
         //
+        $validateData= $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $article = Article::find($article);
+        $article->update($validateData);
+        return redirect('/articles')->with('success', 'Articolo salvato!');
     }
 
     /**
@@ -78,8 +102,12 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($article)
     {
         //
+        $article = Article::find($article);
+        $article->delete();
+
+        return redirect('/articles')->with('success', 'Articolo Cancellato!');
     }
 }

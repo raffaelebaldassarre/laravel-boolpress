@@ -15,6 +15,9 @@ class TagController extends Controller
     public function index()
     {
         //
+        $tags = Tag::all();
+
+        return view('tags.index', compact('tags'));
     }
 
     /**
@@ -25,6 +28,7 @@ class TagController extends Controller
     public function create()
     {
         //
+        return view('tags.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData= $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        Tag::create($validateData);
+        $new_tag = Tag::orderBy('id', 'desc')->first();
+
+        return redirect()->route('tags.show', $new_tag);
     }
 
     /**
@@ -44,9 +55,12 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show($tag)
     {
         //
+        $tag = Tag::find($tag);
+
+        return view('tags.show', compact('tag'));
     }
 
     /**
@@ -55,9 +69,11 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($tag)
     {
         //
+        $tag = Tag::find($tag);
+        return view('tags.edit', compact('tag')); 
     }
 
     /**
@@ -67,19 +83,30 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $tag)
     {
         //
+        $validateData= $request->validate([
+            'title' => 'required',
+        ]);
+
+        $tag = Tag::find($tag);
+        $tag->update($validateData);
+        return redirect('/tags')->with('success', 'Tag salvato!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tag  $tag
+     * @param  \App\Tag $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($tag)
     {
         //
+        $tag = Tag::find($tag);
+        $tag->delete();
+
+        return redirect('/tags')->with('success', 'Tag Cancellato!');
     }
 }

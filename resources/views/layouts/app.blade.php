@@ -34,6 +34,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route ('tags_api')}}">Tag API</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('articles.index') }}">Lista Articoli</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('categories.index') }}">Lista Categorie</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tags.index') }}">Lista Tag</a>
+                    </li>
                 </ul>
             </nav>
         </header>
