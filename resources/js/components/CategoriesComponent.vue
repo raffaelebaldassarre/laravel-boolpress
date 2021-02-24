@@ -2,25 +2,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card" v-for="article in articles" :key="article.id">
+                <div
+                    class="card"
+                    v-for="category in categories"
+                    :key="category.id"
+                >
                     <div class="card-header">
-                        {{ article.title }}
+                        {{ category.title }}
                     </div>
 
                     <div class="card-body">
-                        {{ article.body }}
-                    </div>
-
-                    <div class="card-footer">
-                        <span>Autore : {{ article.author }}</span>
-                        <span
-                            >Data :
-                            {{
-                                new Date(article.created_at).toLocaleString(
-                                    "it"
-                                )
-                            }}</span
-                        >
+                        {{ category.description }}
                     </div>
                 </div>
             </div>
@@ -32,16 +24,16 @@
 export default {
     data() {
         return {
-            articles: ""
+            categories: ""
         };
     },
     mounted() {
         console.log("Component mounted.");
         axios
-            .get("api/articles")
+            .get("api/categories")
             .then(response => {
                 console.log(response.data.data);
-                this.articles = response.data.data;
+                this.categories = response.data.data;
             })
             .catch(error => {
                 console.log(error);
