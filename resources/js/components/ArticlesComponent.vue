@@ -21,6 +21,7 @@
                                 )
                             }}</span
                         >
+                        <span>Categoria : {{ article.category_id }}</span>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@
             <div class="article-details">
               <h2 class="post-title"><?php echo "{$article->title}";?></h2>
               <p class="post-description"><?php echo " {$article->body}" ;?></p>
+              <p class="post-description"><?php echo " {$article->category_id}" ;?></p>
             </div>
           </div>
   </div>

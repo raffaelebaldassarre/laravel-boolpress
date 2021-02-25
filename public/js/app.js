@@ -1985,6 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38561,7 +38562,9 @@ var render = function() {
                   "Data :\n                        " +
                     _vm._s(new Date(article.created_at).toLocaleString("it"))
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _c("span", [_vm._v("Categoria : " + _vm._s(article.category_id))])
             ])
           ])
         }),

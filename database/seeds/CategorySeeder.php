@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 20; $i++){
+        for ($i = 0; $i < 5; $i++){
             $newCategory = new Category();
             $newCategory->title = $faker->words(3, true);
             $newCategory->description = $faker->sentence(20);

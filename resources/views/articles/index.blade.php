@@ -12,6 +12,7 @@
             <th>ID</th>
             <th>Title</th>
             <th>Body</th>
+            <th>Category</th>
             <th>Created at</th>
             <th>Updated at</th>
             <th>Actions</th>
@@ -23,6 +24,7 @@
             <td>{{$article->id}}</td>
             <td>{{$article->title}}</td>
             <td>{{$article->body}}</td>
+            <td>{{$article->category ? $article->category->title : " "}}</td>
             <td>{{$article->created_at}}</td>
             <td>{{$article->updated_at}}</td>
             <td>

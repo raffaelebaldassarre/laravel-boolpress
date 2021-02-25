@@ -34,6 +34,14 @@
       <div class="alert alert-danger">{{ $message }}</div>    
     @enderror
 
+    {{-- <div class="form-group">
+      <label for="author">Autore :</label>
+      <input type="text" class="form-control" name="author" value="{{$article->author}}" />
+    </div>
+    @error('author')
+    <div class="alert alert-danger">{{ $message }}</div>    
+    @enderror --}}
+
       <button type="submit" class="btn btn-success">Aggiungi l' articolo</button>
 
   </form>

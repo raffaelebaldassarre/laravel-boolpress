@@ -37,3 +37,7 @@ Route::get('categories', function () {
         'data' => App\Category::all()
     ], 200);
 });
+
+// Route::get('articles', 'API\ArticleController@index');
+// Route::get('categories', 'API\PageController@index');
+// Route::get('tags', 'API\PageController@index');
