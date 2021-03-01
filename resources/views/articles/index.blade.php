@@ -13,6 +13,7 @@
             <th>Title</th>
             <th>Body</th>
             <th>Category</th>
+            <th>Tag</th>
             <th>Created at</th>
             <th>Updated at</th>
             <th>Actions</th>
@@ -24,15 +25,23 @@
             <td>{{$article->id}}</td>
             <td>{{$article->title}}</td>
             <td>{{$article->body}}</td>
-            <td>{{$article->category ? $article->category->title : " "}}</td>
+            <td>{{$article->category ? $article->category->title : "N/A"}}</td>
+            <td>@if(count($article->tags) > 0)
+                @foreach ($article->tags as $tag)
+                    <span>{{$tag->title}}</span>
+                @endforeach
+                @else
+                    <span>N/A</span>    
+                @endif
+            </td>
             <td>{{$article->created_at}}</td>
             <td>{{$article->updated_at}}</td>
             <td>
-                <a href="{{ route('articles.show',$article->id)}}" class="btn btn-primary">
+                <a href="{{ route('articles.show', $article->id)}}" class="btn btn-primary">
                     <i class="fas fa-eye fa-lg fa-fw"></i>
                     View
                 </a>
-                <a href="{{ route('articles.edit',$article->id)}}" class="btn btn-primary">
+                <a href="{{ route('articles.edit', $article->id)}}" class="btn btn-primary">
                     <i class="fas fa-eye fa-lg fa-fw"></i>
                     Edit
                 </a>

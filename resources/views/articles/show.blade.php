@@ -8,9 +8,19 @@
     </button>
           <div class="blog-card">
             <div class="article-details">
-              <h2 class="post-title"><?php echo "{$article->title}";?></h2>
-              <p class="post-description"><?php echo " {$article->body}" ;?></p>
-              <p class="post-description"><?php echo " {$article->category_id}" ;?></p>
+              <h2 class="post-title">{{$article->title}}</h2>
+              <p class="post-description">{{$article->body}}</p>
+              <p class="post-category">Categoria: {{$article->category ? $article->category->title : "N/A" }}</p>
+              <div class="tag">
+                Tag:
+                @if(count($article->tags) > 0)
+                    @foreach ($article->tags as $tag)
+                        <span>{{$tag->title}}</span>
+                    @endforeach
+                @else
+                <span>N/A</span>    
+                @endif
+              </div>
             </div>
           </div>
   </div>

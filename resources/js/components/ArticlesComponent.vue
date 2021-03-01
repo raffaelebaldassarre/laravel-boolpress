@@ -41,7 +41,8 @@ export default {
         axios
             .get("api/articles")
             .then(response => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
+                console.log(this.articles);
                 this.articles = response.data.data;
             })
             .catch(error => {

@@ -34,15 +34,41 @@
       <div class="alert alert-danger">{{ $message }}</div>    
     @enderror
 
-    {{-- <div class="form-group">
+    <div class="form-group">
       <label for="author">Autore :</label>
-      <input type="text" class="form-control" name="author" value="{{$article->author}}" />
+      <input type="text" class="form-control" name="author" id="author" value="{{ old('author') }}" />
     </div>
     @error('author')
     <div class="alert alert-danger">{{ $message }}</div>    
-    @enderror --}}
+    @enderror
 
-      <button type="submit" class="btn btn-success">Aggiungi l' articolo</button>
+    <div class="form-group">
+      <label for="categories">Category</label>
+      <select class="form-control" name="categories[]" id="categories" multiple>
+        @foreach ($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->title }}</option>
+        @endforeach
+      </select>
+    </div>
+    @error('categories')
+    <div class="alert alert-danger">{{ $message }}</div>    
+    @enderror
+
+    <div class="form-group">
+      <label for="tags">Tag</label>
+      <select class="form-control" name="tags[]" id="tags" multiple>
+        @foreach ($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->title}}</option>
+        @endforeach
+      </select>
+    </div>
+    @error('tags')
+    <div class="alert alert-danger">{{ $message }}</div>    
+    @enderror
+
+
+    {{-- {{ dd($tags ) }} --}}
+    <button type="submit" class="btn btn-success">Aggiungi l' articolo</button>
 
   </form>
 

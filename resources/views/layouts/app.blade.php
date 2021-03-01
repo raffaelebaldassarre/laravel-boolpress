@@ -24,6 +24,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin') }}">Admin</a>
+                    </li>
+
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{route ('articles_api')}}">Articoli API</a>
                     </li>
 
@@ -33,9 +37,9 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{route ('tags_api')}}">Tag API</a>
-                    </li>
+                    </li> --}}
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('articles.index') }}">Lista Articoli</a>
                     </li>
 
@@ -45,7 +49,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('tags.index') }}">Lista Tag</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
         </header>
